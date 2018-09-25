@@ -57,6 +57,14 @@
       <Project>{6bd25f91-8ab2-49d7-96d1-e54e9a29f71e}</Project>
       <Name>CreditCard.Inspector.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CreditCard.Inspector.Data\CreditCard.Inspector.Data.csproj">
+      <Project>{270d92c3-f776-49a5-949f-8d4e5b7e5b62}</Project>
+      <Name>CreditCard.Inspector.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreditCard.Inspector.Models\CreditCard.Inspector.Models.csproj">
+      <Project>{2887703c-fe7c-46b2-86ae-937c18104afe}</Project>
+      <Name>CreditCard.Inspector.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

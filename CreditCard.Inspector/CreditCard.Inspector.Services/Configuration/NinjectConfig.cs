@@ -2,6 +2,7 @@
 using Ninject;
 using System.Reflection;
 using CreditCard.Inspector.Core;
+using CreditCard.Inspector.Data;
 using CreditCard.Inspector.Services.Contracts;
 using CreditCard.Inspector.Services.Services;
 
@@ -23,6 +24,7 @@ namespace CreditCard.Inspector.Services.Configuration
             var result = new StandardKernel();
             result.Load(Assembly.GetExecutingAssembly());
             result.Bind<ILog>().To<Log>().InSingletonScope();
+            result.Bind<IUnitOfWork>().To<UnitOfWork>();
             result.Bind<IPingService>().To<PingService>();
 
             Kernel = result;
