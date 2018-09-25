@@ -17,6 +17,7 @@ namespace CreditCard.Inspector
         {
             var config = new HttpConfiguration();
             config.MapHttpAttributeRoutes();
+            SwaggerConfig.Register(config);
             config.Routes.MapHttpRoute("default", "{controller}/{id}", new { id = RouteParameter.Optional });
 
             appBuilder
