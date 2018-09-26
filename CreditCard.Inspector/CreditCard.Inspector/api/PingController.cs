@@ -19,10 +19,10 @@ namespace CreditCard.Inspector.api
         }
 
         [HttpGet, Route("")]
-        public string GetTextValue()
+        public IHttpActionResult GetTextValue()
         {
             _log.Write("Method to check that app is still alive.");
-            return _pingService.GetValue();
+            return Ok(_pingService.GetValue());
         }
     }
 }

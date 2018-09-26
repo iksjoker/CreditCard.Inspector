@@ -25,6 +25,9 @@ namespace CreditCard.Inspector.Services.Configuration
             result.Load(Assembly.GetExecutingAssembly());
             result.Bind<ILog>().To<Log>().InSingletonScope();
             result.Bind<IUnitOfWork>().To<UnitOfWork>();
+            result.Bind<ICardTypeDetector>().To<CardTypeDetector>();
+            result.Bind<ICardValidationService>().To<CardValidationService>();
+            result.Bind<ICreditCardService>().To<CreditCardService>();
             result.Bind<IPingService>().To<PingService>();
 
             Kernel = result;

@@ -1,5 +1,8 @@
 ﻿using System;
 using CreditCard.Inspector.Data.Entities;
+using CreditCard.Inspector.Data.Repositories;
+using Ninject;
+using Ninject.Parameters;
 
 namespace CreditCard.Inspector.Data
 {
@@ -13,12 +16,11 @@ namespace CreditCard.Inspector.Data
             _ctx = new CreditCardInspectorEntities();
         }
 
-        public T GetRepository<T>() where T : class
+        public T GetRepository<T>() where T : RepositoryBase
         {
-            object[] args = { "ctx", _ctx };
+            var kernel = new StandardKernel();
+            var repository = kernel.Get<T>(new ConstructorArgument("ctx", _ctx));
 
-            var type = typeof(T);
-            var repository = Activator.CreateInstance(type, args);
             return (T) repository;
         }
 

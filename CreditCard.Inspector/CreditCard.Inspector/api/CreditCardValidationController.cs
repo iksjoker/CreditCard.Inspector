@@ -1,25 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
-using CreditCard.Inspector.Models;
+using CreditCard.Inspector.Services.Contracts;
 
 namespace CreditCard.Inspector.api
 {
     [RoutePrefix("api/card-validation")]
     public class CreditCardValidationController : ApiController
     {
-        [HttpGet, Route("")]
-        public ValidationResult CheckCreditCard()
+        private ICreditCardService _creditCardService;
+
+        public CreditCardValidationController(ICreditCardService creditCardService)
         {
-            return new ValidationResult()
-            {
-                CardType = CreditCardType.MasterCard,
-                Result = ValidationType.Valid
-            };
+            _creditCardService = creditCardService;
+        }
+
+        [HttpPost, Route("")]
+        public IHttpActionResult CheckCreditCard(Models.CreditCard card)
+        {
+            var result = _creditCardService.Execute(card);
+            return Ok(result);
         }
     }
 }

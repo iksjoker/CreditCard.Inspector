@@ -4,6 +4,6 @@
     {
         Valid = 0,
         Invalid = 1,
-        Unknown = 5
+        DoesNotExist = 5
     }
 }

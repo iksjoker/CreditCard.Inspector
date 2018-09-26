@@ -45,8 +45,15 @@
   <ItemGroup>
     <Compile Include="Configuration\EngineContext.cs" />
     <Compile Include="Configuration\NinjectConfig.cs" />
+    <Compile Include="Contracts\ICardTypeDetector.cs" />
+    <Compile Include="Contracts\ICardValidationService.cs" />
+    <Compile Include="Contracts\ICreditCardService.cs" />
     <Compile Include="Contracts\IPingService.cs" />
+    <Compile Include="Contracts\ServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CardTypeDetector.cs" />
+    <Compile Include="Services\CardValidationService.cs" />
+    <Compile Include="Services\CreditCardService.cs" />
     <Compile Include="Services\PingService.cs" />
   </ItemGroup>
   <ItemGroup>

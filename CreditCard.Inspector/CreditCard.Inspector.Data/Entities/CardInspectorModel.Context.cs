@@ -29,13 +29,13 @@ namespace CreditCard.Inspector.Data.Entities
     
         public virtual DbSet<CARD_INFO> CARD_INFO { get; set; }
     
-        public virtual int checkIfCreditCardExists(Nullable<long> cardNumber)
+        public virtual ObjectResult<CARD_INFO> checkIfCreditCardExists(Nullable<long> cardNumber)
         {
             var cardNumberParameter = cardNumber.HasValue ?
                 new ObjectParameter("CardNumber", cardNumber) :
                 new ObjectParameter("CardNumber", typeof(long));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("checkIfCreditCardExists", cardNumberParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<CARD_INFO>("exec checkIfCreditCardExists @CardNumber", cardNumberParameter);
         }
     }
 }
